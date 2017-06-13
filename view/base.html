@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="learn javascript by www.liaoxuefeng.com">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+    <header class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">头部</a>
+            </div>
+            <nav class="collapse navbar-collapse" id="bs-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a target="_blank" href="">Get Courses</a>主页</li>
+                    <li><a target="_blank" href="">Source Code</a>浏览</li>
+                    <li><a target="_blank" href="">Resource</a>关于</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {% block main %} {% endblock %}
+    <footer style="background-color:#ddd; padding: 20px 0;">
+        <div class="container">
+            <p>
+                <a target="_blank" href="">关于</a> - 
+                <a target="_blank" href="">我们</a> - 
+                <a target="_blank" href="">？</a>
+            </p>
+            <p>版权所有</p>
+            <p>@2017</p>
+        </div>
+    </footer>
+</body>
+</html>
