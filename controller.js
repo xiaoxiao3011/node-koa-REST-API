@@ -1,4 +1,4 @@
-//路由加载
+//路由加载->遍历目录（默认controls）所有请求借口
 const fs = require('fs');
 
 
