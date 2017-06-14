@@ -7,7 +7,7 @@ module.exports={
     restify: (pathPrefix) => {
     	pathPrefix=pathPrefix || '/api/';
     	return async (ctx,next)=>{
-            //console.log(ctx.request.path);
+            console.log(ctx.request.path);
     		if(ctx.request.path.startsWith(pathPrefix)){
     			ctx.rest = (data) => {
     				ctx.response.type='application/json';

@@ -1,27 +1,26 @@
-const products = require('./data');
+const news = require('./data-new');
 
 const APIError = require('../rest').APIError;
 
 
 module.exports = {
-    'GET /api/products':async(ctx,next)=>{
+    'GET /api/news':async(ctx,next)=>{
         ctx.rest({
-            products:products.getProducts()
+            news:news.getNews()
         });
     },
 
-    'POST /api/products':async(ctx,next)=>{
-        products.createProduct(ctx.request.body.name, ctx.request.body.manufacturer, parseFloat(ctx.request.body.price));
-        ctx.rest(p);
+    'GET /api/new:id':async(ctx,next)=>{
+        ctx.rest({
+            news:news.getNew(ctx.params.id)
+        });
     },
 
-    'DELETE /api/products/:id': async (ctx, next) => {
-        //console.log(`delete product ${ctx.params.id}...`);
-        var p = products.deleteProduct(ctx.params.id);
-        if (p) {
-            ctx.rest(p);
-        } else {
-            throw new APIError('product:not_found', 'product not found by id.');
-        }
+    'POST /api/news':async(ctx,next)=>{
+       
+    },
+
+    'DELETE /api/news/:id': async (ctx, next) => {
+      
     }
 }
