@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "pang",
+  "author": "pangyongsheng",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.3",
