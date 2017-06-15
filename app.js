@@ -1,6 +1,7 @@
 //APP
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+var cors = require('koa-cors');
 
 const controller = require('./controller');
 const templating = require('./templating');
@@ -35,6 +36,8 @@ app.use(templating('view', {
 app.use(rest.restify());    //REST接口
 
 app.use(controller());  //扫描控制器
+
+app.use(cors());  //跨域
 
 app.listen(3000);   // 在端口3000监听:
 console.log('app started at port 3000...');
