@@ -1,7 +1,7 @@
 //APP
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
-var cors = require('koa-cors');
+const cors = require('koa-cors');
 
 const controller = require('./controller');
 const templating = require('./templating');
