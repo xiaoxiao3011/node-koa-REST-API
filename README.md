@@ -8,10 +8,10 @@
 
 ## 目录结构
 
-* controlls  ---放置控制器文件
-* view		 ---放置html模板
-* test		 ---放置测试文件
-* static	 ---放置静态文件		
+* controlls  ---该目录下放置控制器文件
+* view		 ---该目录下放置html模板
+* test		 ---该目录下放置测试文件
+* static	 ---该目录下放置静态文件		
 * app.js		 ---node启动文件
 * controlls.js	 ---所有控制器加载到路由
 * templating.js  ---模板文件编译
