@@ -4,7 +4,8 @@
   "description": "koa2",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start":"node app.js"
   },
   "author": "pangyongsheng",
   "license": "ISC",

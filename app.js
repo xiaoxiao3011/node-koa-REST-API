@@ -14,12 +14,8 @@ const isProduction = process.env.NODE_ENV === 'production';	//判断是否为生
 app.use(cors());  //跨域-cors
 
 app.use(async (ctx, next) => {  //输出请求
-    console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
-    //记录请求时间
-    // var  start = new Date().getTime(),
+    console.log(`Process ${ctx.request.method} ${ctx.request.url}...`); //输出收到的请求
     await next();
-    // execTime = new Date().getTime() - start;
-    // ctx.response.set('X-Response-Time', `${execTime}ms`);
 });
 
 if (! isProduction) {           //静态文件加载

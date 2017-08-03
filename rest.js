@@ -1,16 +1,14 @@
 //REST绑定
 module.exports={
+
 	APIError: function (code, message) {   //restAPI错误处理
         this.code = code || 'internal:unknown_error';
         this.message = message || '';
     },
+    
     restify: (pathPrefix) => {  //restAPI方法绑定->为ctx绑定rest方法
     	pathPrefix=pathPrefix || '/api/';
     	return async (ctx,next)=>{
-            //console.log(ctx.request.path);
-            // if (ctx.request.method == "OPTIONS") {
-            //     ctx.response.status = 200
-            //  }
     		if(ctx.request.path.startsWith(pathPrefix)){  //API请求
     			ctx.rest = (data) => {
     				ctx.response.type='application/json';
