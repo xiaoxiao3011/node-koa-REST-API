@@ -8,6 +8,9 @@ module.exports={
     	pathPrefix=pathPrefix || '/api/';
     	return async (ctx,next)=>{
             //console.log(ctx.request.path);
+            // if (ctx.request.method == "OPTIONS") {
+            //     ctx.response.status = 200
+            //  }
     		if(ctx.request.path.startsWith(pathPrefix)){  //API请求
     			ctx.rest = (data) => {
     				ctx.response.type='application/json';
