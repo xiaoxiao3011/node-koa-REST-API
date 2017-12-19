@@ -1,28 +1,38 @@
-{% extends "base.html" %} {% block main %}
+{% extends "base.html" %}
+<!--引入base.html -->
+{% block main %}
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-offset-2 col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 用户登录</h3>
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>登录</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="/signin" method="post">
+                    <form action="/signin" method="post" class="form-horizontal">
                         <div class="form-group">
-                            <label>邮箱：</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email">
-                            <p class="help-block">Use email: admin@example.com</p>
+                            <label class="col-sm-2 control-label">邮箱：</label>
+                            <div class="col-sm-10">
+                                <input type="email" name="email" class="form-control " placeholder="Email">
+                            </div>
                         </div>
+                        
                         <div class="form-group">
-                            <label>密码：</label>
+                            <label class="col-sm-2 control-label">密码：</label>
+                            <div class="col-sm-10">
                             <input type="password" name="password" class="form-control" placeholder="Password">
-                            <p class="help-block">Use password: 123456</p>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">登录</button>
+                         <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary col-sm-4 ">登录</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

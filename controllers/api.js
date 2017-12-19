@@ -1,38 +1,53 @@
 const APIError = require('../rest').APIError;   //错误请求处理
 
-//数据项...
-const news = require('../data/data-new');
-const user = require('../data/data-user');
+//服务...
+const userlist=require('../server/user');
 
-//请求借口配置...
+//请求接口配置...
 module.exports = {
 
-    //get请求
-    'GET /api/news':async(ctx,next)=>{
+    //userlist全部
+    'GET /api/userlist':async(ctx,next)=>{
         ctx.rest({
-            news:news.getNews()
-        });
-    },
-    'GET /api/new:id':async(ctx,next)=>{
-        ctx.rest({
-            news:news.getNew(ctx.params.id)
-        });
-    },
+            userlist:userlist.getAllUser()
 
-    //user
-    'GET /api/user':async(ctx,next)=>{
+        })
+    },
+    //选择男
+    'GET /api/userlist/m':async(ctx,next)=>{
         ctx.rest({
-            news:user.getUser()
+            userlist:userlist.getUserSex('男')
+        })
+    },
+    //选择女
+    'GET /api/userlist/f':async(ctx,next)=>{
+        ctx.rest({
+            userlist:userlist.getUserSex('女')
+        })
+    },
+    //姓名搜索
+    'GET /api/userlist:name':async(ctx,next)=>{
+        ctx.rest({
+            userlist:userlist.getUserName(ctx.params.name)
         });
     },
-
-    //post请求
-    'POST /api/news':async(ctx,next)=>{
-       
+    //删除用户
+    'DELETE /api/userlist:id':async(ctx,next)=>{
+        ctx.rest({
+            userlist:userlist.deleteUser(ctx.params.id)
+        })
     },
-    
-    //DELETE
-    'DELETE /api/news/:id': async (ctx, next) => {
-      
+    //添加用户
+    'PUT /api/adduser':async(ctx,next)=>{
+        console.log("put");
+        ctx.rest({
+            userlist:userlist.addUser(ctx.request.body)
+        })
+    },
+    //修改用户信息
+    'POST /api/edituser':async(ctx,next)=>{
+        ctx.rest({
+            userlist:userlist.editUser(ctx.request.body)
+        })
     }
 }

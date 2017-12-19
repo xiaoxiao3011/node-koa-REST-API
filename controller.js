@@ -1,8 +1,13 @@
 //路由加载->遍历目录（默认controls）所有请求接口
 const fs = require('fs');
 
+/*
+ * 遍历全部请求节点添加到路由
+ * @param router  {obj} router对象
+ * @param mapping {obj} controllers对象
+ */
 function addMapping(router, mapping) {
-    for (var url in mapping) {
+    for (var url in mapping) { 
         if (url.startsWith('GET ')) {
             var path = url.substring(4);
             router.get(path, mapping[url]);
@@ -29,7 +34,7 @@ function addControllers(router, dir) {
     fs.readdirSync(__dirname + '/' + dir).filter((f) => {
         return f.endsWith('.js');
     }).forEach((f) => {
-        //console.log(`process controller: ${f}...`);
+        console.log(`process controller: ${f}...`);
         let mapping = require(__dirname + '/' + dir + '/' + f);
         addMapping(router, mapping);
     });

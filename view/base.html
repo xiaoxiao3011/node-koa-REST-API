@@ -6,33 +6,26 @@
     <meta name="description" content="learn javascript by www.liaoxuefeng.com">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <script src="/static/js/bootstrap.js"></script>
+    <!-- <script src="/static/js/bootstrap.js"></script> -->
 </head>
 <body>
-    <header class="navbar navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="/" class="navbar-brand">图标</a>
-            </div>
-            <nav class="collapse navbar-collapse" id="bs-navbar">
-                <ul class="nav navbar-nav">
-                    <li><a target="_blank" href="">主页</a></li>
-                    <li><a target="_blank" href="">浏览</a></li>
-                    <li><a target="_blank" href="">关于</a></li>
-                </ul>
-            </nav>
+    <header class="navbar navbar-static-top bg-primary">
+        <div class="container ">
+           <h1>KOA</h1>
         </div>
     </header>
-    {% block main %} {% endblock %}
+    {% block main %} 
+
+    <!-- 页面内容植入位置 -->
+    
+    {% endblock %}
     <footer style="background-color:#ddd; padding: 20px 0;">
         <div class="container">
             <p>
-                <a target="_blank" href="">关于</a> - 
-                <a target="_blank" href="">我们</a> - 
-                <a target="_blank" href="">？</a>
+                <a target="_blank" href="https://github.com/pangyongsheng/node-koa-REST-API">项目地址</a>
             </p>
-            <p>版权所有</p>
-            <p>@2017</p>
+            <p>koa-restAPI的搭建</p>
+            <p>pangyongsheng@2017</p>
         </div>
     </footer>
 </body>

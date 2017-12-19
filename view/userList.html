@@ -1,0 +1,157 @@
+{% extends "base.html" %} 
+<!--引入base.html -->
+{% block main %}
+<div id="user" class="container">
+
+	<div class="row">
+		<div class="row">
+			<div class="col-md-7" >
+			<div class="input-group">	
+			  	<input type="text" class="form-control" style="width:25%" v-model="newuser.name">
+			  	<input type="text" class="form-control" style="width:25%" v-model="newuser.sex">
+			  	<input type="text" class="form-control" style="width:25%" v-model="newuser.age">
+			  	<button class="btn btn-success col-md-3 " @click="add">添加</button>
+			</div>
+		</div>
+			<!-- 操作区 -->
+			<div class="col-md-5">
+				<div class="col-md-4">
+					<div class="btn-group" role="group" aria-label="...">
+					  <button type="button" class="btn btn-default btn-info"   @click="selm">男</button>
+					  <button type="button" class="btn btn-default btn-danger" @click="self">女</button>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="input-group">
+			      		<input type="text" class="form-control" placeholder="Search for..." v-model="name">
+			      		<span class="input-group-btn">
+			        		<button class="btn btn-default" type="button" @click="sel">搜索</button>
+			      		</span>
+		    		</div>
+				</div>
+		    	
+		  	</div>
+		</div>
+		<!-- 表格 -->
+		<table class="table table-striped col-md-8">
+			<caption>用户列表</caption>
+			<thead>
+				<tr>
+					<th class="text-center">ID</th>
+					<th class="text-center">姓名</th>
+					<th class="text-center">性别</th>
+					<th class="text-center">年龄</th>
+					<th class="text-center">操作</th>
+				</tr>
+			</thead>
+			<tbody id="tb">
+				<tr v-for="(li,index) in list">
+					<td class="text-center">${li.id}</td>
+					<td class="text-center" contenteditable="true">${li.name}</td>
+					<td class="text-center" contenteditable="true">${li.sex}</td>
+					<td class="text-center" contenteditable="true">${li.age}</td>
+					<td class="text-center">
+						<button type="button" class="btn btn-warning" @click="del(li.id)">删除</button>
+						<button type="button" class="btn btn-warning" @click="edi(index)">保存</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		
+	</div>
+</div>
+
+<script src="/static/js/vue.js"></script>
+<script src="/static/js/vue-resource.js"></script>
+<script>
+	new Vue({
+		el:'#user',
+		data:{
+			list:'',
+			name:'',
+			newuser:{
+				name:'',
+				sex:'',
+				age:''
+			}
+		},
+		methods:{
+			
+			//获取全部数据
+			getlist:function(){
+				this.$http.get('http://localhost:3000/api/userlist')
+				.then(function(res){
+					this.list=res.body.userlist;
+				},function(err){})
+			},
+
+			//筛选男女
+			selm:function(){
+				this.$http.get('http://localhost:3000/api/userlist/m')
+				.then(function(res){
+					this.list=res.body.userlist;
+				},function(err){})
+			},
+			self:function(){
+				this.$http.get('http://localhost:3000/api/userlist/f')
+				.then(function(res){
+					this.list=res.body.userlist;
+				},function(err){})
+			},
+			//搜索
+			sel:function(){
+				var v=this.name;
+				this.$http.get('http://localhost:3000/api/userlist'+v)
+				.then(function(res){
+					//console.log(res.body.userlist);
+					this.list=res.body.userlist;
+				},function(err){})
+			},
+			//删除
+			del:function(x){
+				this.$http.delete('http://localhost:3000/api/userlist'+x)
+				.then(function(res){
+					console.log(res);
+					this.list.splice(x-1,1);	
+				},function(err){})
+			},
+			//添加用户
+			add:function(){
+				console.log(this.newuser);
+				this.$http.put('http://localhost:3000/api/adduser',this.newuser)
+				.then((res)=>{
+					this.getlist();
+				})
+			},
+			//编辑用户
+			edi:function(index){
+				var node=document.getElementById('tb');
+				var tk={
+					id:node.getElementsByTagName("tr")[index].getElementsByTagName("td")[0].innerHTML,
+					name:node.getElementsByTagName("tr")[index].getElementsByTagName("td")[1].innerHTML,
+					sex:node.getElementsByTagName("tr")[index].getElementsByTagName("td")[2].innerHTML,
+					age:node.getElementsByTagName("tr")[index].getElementsByTagName("td")[3].innerHTML
+					
+				};
+				//console.log(tk);
+				this.$http.post('http://localhost:3000/api/edituser',tk)
+				.then(function(res){
+					this.getlist();
+					alert('保存成功');
+				},function(err){
+					alert('保存失败');
+				})
+				
+			}
+			
+		},
+		created:function() {
+			//初始化获取数据
+			this.getlist();
+		},
+		//与nunjucks语法冲突 修改
+		delimiters:['${', '}']  
+	})
+</script>
+{% endblock %}
