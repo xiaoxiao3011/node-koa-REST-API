@@ -1,6 +1,5 @@
 //模拟数据
-module.exports=[
-    
+module.exports=[  
     {id:'1',name:'李雷',sex:'男',age:'23'},
     {id:'2',name:'彭静',sex:'女',age:'21'},
     {id:'3',name:'姜晓',sex:'女',age:'20'},
