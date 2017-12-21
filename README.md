@@ -32,4 +32,4 @@
 * static-file.js  ---静态文件加载
 
 
-##3、使用介绍：http://www.cnblogs.com/pangys/p/7280793.html
+## 3、使用介绍：http://www.cnblogs.com/pangys/p/7280793.html
