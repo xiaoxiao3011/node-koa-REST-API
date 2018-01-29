@@ -3,6 +3,7 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const cors = require('koa2-cors');
 
+
 const controller = require('./controller'); 	//扫描控制器
 const templating = require('./templating'); 	//模板编译
 const rest = require('./rest');             	//restAPI
