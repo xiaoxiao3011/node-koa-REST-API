@@ -5,7 +5,7 @@
 ***
 
 
-封装了路由、模板、静态文件加载、mvc、restAPI、测试等模块
+封装了路由、模板、静态文件加载、mvc、restAPI、cookie/session、sql、测试等模块
 
 ## 1、使用
 

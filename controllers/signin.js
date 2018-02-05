@@ -20,6 +20,7 @@ module.exports = {
                 overwrite: false  // 是否允许重写
               }
             )
+
             ctx.render('signin-ok.html', {
                 title: '登录成功',
                 name: email
