@@ -10,7 +10,6 @@ module.exports = {
     'GET /api/userlist':async(ctx,next)=>{
         ctx.rest({
             userlist:userlist.getAllUser()
-
         })
     },
     //选择男
@@ -39,7 +38,7 @@ module.exports = {
     },
     //添加用户
     'PUT /api/adduser':async(ctx,next)=>{
-        console.log("put");
+        //console.log("put");
         ctx.rest({
             userlist:userlist.addUser(ctx.request.body)
         })
@@ -50,4 +49,6 @@ module.exports = {
             userlist:userlist.editUser(ctx.request.body)
         })
     }
+
+
 }
