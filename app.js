@@ -24,10 +24,12 @@ if (! isProduction) {           //静态文件加载
     let staticFiles = require('./static-file');
     app.use(staticFiles('/static/', __dirname + '/static'));
 }
+
 app.use(templating('view', {    //模板加载
     noCache: !isProduction,	    //非生产->不缓存
     watch: !isProduction
 }));
+
 app.use(rest.restify());        //REST接口
 app.use(controller());          //扫描加载控制器
 

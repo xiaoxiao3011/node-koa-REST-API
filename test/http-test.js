@@ -10,15 +10,15 @@ describe('#hello.js', () => {
         });
 
         it('sum(1) should return 2', () => {
-            assert.strictEqual(sum(1), 2);
+            assert.strictEqual(sum(1), 1);
         });
 
         it('sum(2) should return 3', () => {
-            assert.strictEqual(sum(2), 3);
+            assert.strictEqual(sum(1, 2), 3);
         });
 
         it('sum(3) should return 4', () => {
-            assert.strictEqual(sum(3), 4);
+            assert.strictEqual(sum(1, 2, 3), 6);
         });
     });
 });
