@@ -6,7 +6,9 @@ const cors = require('koa2-cors');
 const controller = require('./controller'); //扫描控制器
 const templating = require('./templating'); //模板编译
 const rest = require('./rest'); //restAPI
-const session = require('./session') //session配置
+const session = require('./session'); //session配置
+
+const fileServ = require('./file-server');//文件资源服务
 
 //const ws = require('./ws/jnbank');
 
@@ -37,5 +39,8 @@ app.use(controller()); //扫描加载控制器
 
 //ws.ws();
 
-app.listen(3000); // 在端口3000监听:
+app.listen(3000); // app应用服务在端口3000监听:
+fileServ.listen(8099)   //文件服务在8099
+
+
 console.log('app started...');
